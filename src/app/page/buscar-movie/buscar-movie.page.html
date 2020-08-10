@@ -1,0 +1,38 @@
+<ion-header >
+  <ion-toolbar>
+      <ion-icon color="primary" style="font-size: 40px;" slot="start" (click)="toggleMenu()"  name="reorder-four-outline"></ion-icon>
+      <ion-searchbar placeholder="Buscar pelicula" [(ngModel)]="peli"  animated color="primary" style="font-family: 'Times New Roman', Times, serif" (keyup.enter)="getMovie()" showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>  
+      
+  </ion-toolbar>
+</ion-header>
+
+
+<ng-template #sinImagen>
+  <ion-thumbnail slot="start" >
+      <img src="assets/imagenes/sinImagen.png">
+  </ion-thumbnail>
+</ng-template>
+
+<ion-content>
+  <ion-list>
+    <ion-item [routerLink]="['../detalle', item.id ]"  *ngFor="let item of listMovies">
+      <ion-label style="font-family: 'Times New Roman', Times, serif" color="primary">
+        {{item.original_title}} 
+      </ion-label>
+      <ion-chip>
+        <ion-label color="secondary">Ver</ion-label>
+      </ion-chip>
+    
+      <ion-thumbnail slot="start"*ngIf="item.poster_path else sinImagen">
+        <img src="https://image.tmdb.org/t/p/original/{{item.poster_path}}">
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="getMovie($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

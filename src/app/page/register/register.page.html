@@ -1,0 +1,44 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary">
+      </ion-back-button>
+      <ion-title color="primary" style="font-family: 'Times New Roman', Times, serif">Registrarse</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ionContent">
+  <ion-list class="centrado">
+    <div>
+      <input class="input" type="text" placeholder="Nombres Completos" >
+    </div>
+    <br>
+    <br>
+    <div>
+      <input class="input" type="text" placeholder="Usuario"  >
+    </div>
+    <br>
+    <br>
+    <div>
+      <input class="input" type="password" placeholder="Contraseña" >
+    </div>
+    <br>
+    <br>
+    <div>
+      <input class="input" type="password" placeholder="Confirmar contraseña">
+    </div>
+</ion-list>
+
+  <!-- fab placed to the (vertical) center and end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentToast()">
+    <ion-fab-button color="dark" color="tertiary">
+      <ion-icon name="save-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  
+
+ 
+  
+</ion-content>

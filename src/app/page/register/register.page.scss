@@ -1,0 +1,39 @@
+ion-header{
+    --ion-background-color: #2E344B!important;
+}
+
+ion-content{
+    --ion-background-color: white!important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #929397;
+    opacity: 100;
+}
+
+.centrado{
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+input:focus, input.input:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.input{  
+    background-color: transparent;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-color: rgb(46, 52, 75);
+    border-bottom-width: 1;
+    font-size: 18px;
+    color: rgb(46, 52, 75);
+    padding-right: 35%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button >
+      </ion-back-button>
+      <ion-title color="primary" style="font-family: 'Times New Roman', Times, serif">{{detalleMovie.original_title}}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ng-template #sinImagen>
+  <div>
+    <img width="100%" src="assets/imagenes/sinImagen.png">
+  </div>
+</ng-template>
+
+  <ng-template #Arriba>
+    <ion-icon *ngIf="arriba" (click)="verComent()" style="font-size: 25px !important" color="primary" name="chevron-up-circle-outline"></ion-icon>
+  </ng-template>
+
+  <ng-template #ArribaComentar>
+    <ion-icon *ngIf="arribaComentar" (click)="iComent()" style="font-size: 25px !important" color="primary" name="chevron-up-circle-outline"></ion-icon>
+  </ng-template>
+
+<ion-content >
+  <ion-card>
+    <div *ngIf="detalleMovie.poster_path else sinImagen">
+      <img src="https://image.tmdb.org/t/p/original/{{detalleMovie.poster_path}}">
+    </div>
+    
+    <ion-card-header>
+      <ion-card-subtitle> <ion-chip *ngFor="let item of detalleMovie.genres" >
+        {{item.name}}
+      </ion-chip> 
+    </ion-card-subtitle>
+      <ion-card-title style="font-weight: bold;" class="fontTipe">{{detalleMovie.original_title}} 
+        <ion-chip [routerLink]="['../video-movie', idMovie ]" >Trailer</ion-chip>
+      </ion-card-title>
+      
+    </ion-card-header>
+  
+    <ion-card-content class="fontTipe">
+      <p>{{detalleMovie.overview}} </p>
+      
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-content>
+      <ion-icon *ngIf="abajo else Arriba" (click)="verComent()" style="font-size: 25px !important" color="primary" name="chevron-down-circle-outline"></ion-icon>
+      <h1 style="float:left; font-size: 19px; color: black;">Comentarios</h1>
+      <div *ngIf="verComentario"> 
+        <ion-item *ngFor="let item of comentarioMovie.comentario">
+          <ion-label  style="font-family: 'Times New Roman', Times, serif" color="primary">
+           {{item.nombre}}: <p style="color: black;">{{item.descripcion}} </p>
+          </ion-label>
+        </ion-item>
+        <ion-icon *ngIf="abajoComentar else ArribaComentar" (click)="iComent()" style="font-size: 25px !important" color="primary" name="chevron-down-circle-outline"></ion-icon>
+        <h1 style="float:left; font-size: 19px; color: black;">Comentar</h1>
+        <div *ngIf="iComentar">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input style="color: black;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-input style="color: black;"></ion-input>
+          </ion-item>
+          <ion-button type="">Enviar</ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+    
+  </ion-card>
+
+  </ion-content>
+
